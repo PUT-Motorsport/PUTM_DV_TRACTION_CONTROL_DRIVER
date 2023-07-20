@@ -5,10 +5,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
 )
 
-catkin_package(INCLUDE_DIRS include)
-
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(main src/main.cpp src/putm_dv_traction_control_driver.cpp)
+add_executable(putm_dv_traction_control_driver_node src/putm_dv_traction_control_driver_node.cpp)
 
-target_link_libraries(main ${catkin_LIBRARIES})
+target_link_libraries(putm_dv_traction_control_driver_node ${catkin_LIBRARIES})

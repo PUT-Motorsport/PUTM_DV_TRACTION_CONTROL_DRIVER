@@ -1,4 +1,4 @@
 [submodule "include/PUTM_DV_CAN_LIBRARY_MULTIPLE_SOCKETS"]
-	path = include/PUTM_DV_CAN_LIBRARY_MULTIPLE_SOCKETS
+	path = src/PUTM_DV_CAN_LIBRARY_RAII
 	url = git@github.com:PUT-Motorsport/PUTM_DV_CAN_LIBRARY_MULTIPLE_SOCKETS.git
 	branch = main
