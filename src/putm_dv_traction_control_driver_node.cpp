@@ -17,14 +17,16 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 
 int main(int argc, char **argv)
 {
+  ros::init(argc, argv, "putm_dv_traction_control_driver");
+  ros::NodeHandle nh;
+  ROS_INFO("Starting the traction control driver node...");
+
+  ros::Subscriber joy_sub;
+  joy_sub = nh.subscribe<sensor_msgs::Joy>("joy", 10, joyCallback);
+
   try
   {
     CanTx can("can0");
-    ros::init(argc, argv, "putm_dv_traction_control_driver");
-    ros::NodeHandle nh;
-    ros::Subscriber joy_sub;
-    joy_sub = nh.subscribe<sensor_msgs::Joy>("joy", 10, joyCallback);
-
     ros::Rate r(100);
     while (ros::ok)
     {
