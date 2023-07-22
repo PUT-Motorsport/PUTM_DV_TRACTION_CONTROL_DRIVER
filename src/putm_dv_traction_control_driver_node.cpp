@@ -6,13 +6,13 @@
 
 using namespace PUTM_CAN;
 
-static Apps_main apps_main_frame = {0};
+static DV_TC_control dv_tc_control_frame = {0};
 
 void joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 {
   const uint16_t max_val = 100;
-  apps_main_frame.pedal_position = -(max_val / 2) * (joy->axes[4] - 1);
-  ROS_INFO("Pedal position: %d", apps_main_frame.pedal_position);
+  dv_tc_control_frame.set_current = -(max_val / 2) * (joy->axes[5] - 1);
+  ROS_INFO("Pedal position: %d", dv_tc_control_frame.set_current);
 }
 
 int main(int argc, char **argv)
@@ -30,8 +30,7 @@ int main(int argc, char **argv)
     ros::Rate r(100);
     while (ros::ok)
     {
-      can.transmit(apps_main_frame);
-      apps_main_frame.counter++;
+      can.transmit(dv_tc_control_frame);
       ros::spinOnce();
       r.sleep();
     }
