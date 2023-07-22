@@ -12,7 +12,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr &joy)
 {
   const uint16_t max_val = 500;
   dv_tc_control_frame.set_current = -(max_val / 2) * (joy->axes[5] - 1);
-  ROS_INFO("Pedal position: %d", dv_tc_control_frame.set_current);
+  ROS_DEBUG("Pedal position: %d", dv_tc_control_frame.set_current);
 }
 
 int main(int argc, char **argv)
